@@ -24,7 +24,7 @@ def main(glob_img_path, glob_txt_path, bucket_key_path):
 
     gfu = GcsFileUploader(bucket_key_path = bucket_key_path)
 
-    num_of_samples_done = read_json('num_of_files_done.json')['st_index']
+    num_of_samples_done = read_json('num_of_files_done.json')['st_index'] if 'num_of_files_done.json' in os.listdir() else {'st_index' : 0}
     images = glob(glob_img_path)
     labels = glob(glob_txt_path)
     N = len(images)
